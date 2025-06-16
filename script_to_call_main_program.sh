@@ -31,4 +31,3 @@ if [[ ${TYPE_OF_PROGRAM} == 'CSF_COMPARTMENTS' ]]; then
 fi
 
 
-fi
