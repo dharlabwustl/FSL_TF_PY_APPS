@@ -17,10 +17,10 @@ if echo "$input" | grep -q "+"; then
 
   # Read the split words into an array
   read -ra ADDR <<< "$input"
-  export XNAT_HOST=${ADDR[0]} 
+  export XNAT_HOST=$XNAT_HOST ##{ADDR[0]}
   SUBTYPE_OF_PROGRAM=${ADDR[1]} 
 else
-export XNAT_HOST=${5} 
+export XNAT_HOST=$XNAT_HOST ##{5}
     echo "'+' is not present in the string"
 fi
 
