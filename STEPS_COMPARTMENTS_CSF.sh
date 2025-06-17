@@ -1,7 +1,7 @@
 echo " I AM WORKING"
 SESSION_ID=${1}
 ## STEPS 1: Registration of template ct (COLIHM62) to a session CT.
-/software/lin_transform_before_deepreg_COLIHM62_as_moving.sh $SESSION_ID $XNAT_USER $XNAT_PASS $XNAT_HOST /input1 /output
+#/software/lin_transform_before_deepreg_COLIHM62_as_moving.sh $SESSION_ID $XNAT_USER $XNAT_PASS $XNAT_HOST /input1 /output
 rm -r /workinginput/*
 rm -r /workingoutput/*
 rm -r /input1/*
