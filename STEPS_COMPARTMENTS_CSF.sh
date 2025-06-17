@@ -19,9 +19,9 @@ rm -r /maskonly/*
 #clean_directories
 #/software/deepregbasedregis_csf_cistern_midline_separation_with_COLIHM62_NO_RAPIDS.sh $SESSION_ID $XNAT_USER $XNAT_PASS $XNAT_HOST /input1 /output
 #clean_directories
-/software/compartment_separation_with_vent_afterdeepreg_with_cistern_with_COLIHM62_with_midline.sh  $SESSION_ID $XNAT_USER $XNAT_PASS $XNAT_HOST
+#/software/compartment_separation_with_vent_afterdeepreg_with_cistern_with_COLIHM62_with_midline.sh  $SESSION_ID $XNAT_USER $XNAT_PASS $XNAT_HOST
 clean_directories
-#/software/csf_compartments_vols_N_display_for_NON_SAH.sh ${SESSION_ID} $XNAT_USER $XNAT_PASS $XNAT_HOST
+/software/csf_compartments_vols_N_display_for_NON_SAH.sh ${SESSION_ID} $XNAT_USER $XNAT_PASS $XNAT_HOST
 ##if [[ ${TYPE_OF_PROGRAM} == 'TRANFORM_BEFORE_DEEPREG_COLIHM62_MOVING' ]]; then
 ##  echo " I AM AT TRANFORM_BEFORE_DEEPREG_COLIHM62_MOVING" >> /software/ERROR.txt
 ##  echo " I AM AT TRANFORM_BEFORE_DEEPREG_COLIHM62_MOVING"

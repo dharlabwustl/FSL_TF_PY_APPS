@@ -59,16 +59,7 @@ RUN pip3 install \
   opencv-python \
   scikit-image
 # Install LaTeX (with common packages)
-#RUN apt-get update && apt-get install -y \
-#    texlive-latex-base \
-#    texlive-latex-extra \
-#    texlive-fonts-recommended \
-#    texlive-fonts-extra \
-#    texlive-science \
-#    texlive-luatex \
-#    texlive-xetex \
-#    latexmk \
-#    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 
 # Environment variables for REDCap / database connections (customize as needed)
 ENV REDCAP_API='36F3BA05DE0507BEBDFB94CC5DA13F93'
@@ -103,6 +94,15 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Upgrade pip
 RUN pip install --upgrade pip
-
+RUN apt-get update && apt-get install -y \
+    texlive-latex-base \
+    texlive-latex-extra \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    texlive-science \
+    texlive-luatex \
+    texlive-xetex \
+    latexmk \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 # Default command
 CMD ["/bin/bash"]
