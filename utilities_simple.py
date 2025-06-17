@@ -14,16 +14,6 @@ import nibabel as nib
 from skimage import exposure 
 import smtplib,math
 import matplotlib.pyplot as plt
-def bet_gray_when_bet_binary_given():
-    grayfilename_nib=nib.load(sys.argv[1] ) #grayfilename)
-    betfilename_nib=nib.load(sys.argv[2] ) #betfilename)
-    outputfilename=sys.argv[3]
-    betfilename_nib_data=betfilename_nib.get_fdata()
-    grayfilename_nib_data=grayfilename_nib.get_fdata()
-    grayfilename_nib_data[betfilename_nib_data<1]=np.min(grayfilename_nib_data) #.split(".nii")[0]+"RESIZED.nii.gz")
-    array_mask = nib.Nifti1Image(grayfilename_nib_data, affine=grayfilename_nib.affine, header=grayfilename_nib.header)
-    nib.save(array_mask, outputfilename)
-
 def demo():
     print(" i m in demo")
 def histogram_sidebyside(infarct_data,noninfarct_data,image_filename):
@@ -189,8 +179,65 @@ def hdr2niigz_py(filenameniigz,original_grayfile,niigzfilenametosave) : #,header
     analyzedata=nib.AnalyzeImage.from_filename(filenameniigz)
     array_img = nib.Nifti1Image(analyzedata.dataobj.get_unscaled(), affine=original_grayfile_nib.affine, header=original_grayfile_nib.header)
     nib.save(array_img, niigzfilenametosave)
-    
-    
+
+def resizeinto_512by512_and_flip(image_nib_nii_file_data):
+    print('I am in utilities_simple.py: resizeinto_512by512_and_flip ')
+    print('image_nib_nii_file_data.shape')
+    print(image_nib_nii_file_data.shape)
+    size_diff_x=np.abs(image_nib_nii_file_data.shape[0]-512)
+    size_diff_y=np.abs(image_nib_nii_file_data.shape[1]-512)
+    temp_array=np.copy(image_nib_nii_file_data)
+
+    if image_nib_nii_file_data.shape[0] <512:
+        print('shape[0]<512')
+        if (size_diff_x % 2 )== 0 :
+            size_diff_x=int(size_diff_x/2)
+            npad = ((size_diff_x-1, size_diff_x+1), (0, 0), (0, 0))
+        else :
+            size_diff_x=int(size_diff_x/2)
+            npad = ((size_diff_x, size_diff_x+1), (0, 0), (0, 0))  #abs(np.min(image_levelset_data)
+        temp_array=np.pad(temp_array, pad_width=npad, mode='constant', constant_values=np.min(temp_array))
+    if image_nib_nii_file_data.shape[1] <512:
+        print('shape[1]<512')
+        if (size_diff_y % 2 )== 0 :
+            size_diff_y=int(size_diff_y/2)
+            npad = ((0, 0),(size_diff_y-1, size_diff_y+1),  (0, 0))
+        else :
+            size_diff_y=int(size_diff_y/2)
+            npad = ( (0, 0),(size_diff_y, size_diff_y+1), (0, 0))  #abs(np.min(image_levelset_data)
+        temp_array=np.pad(temp_array, pad_width=npad, mode='constant', constant_values=np.min(temp_array))
+
+    if image_nib_nii_file_data.shape[0] > 512:
+        print('shape[0]>512')
+        if (size_diff_x % 2 )== 0 :
+            size_diff_x=int(size_diff_x/2)
+            temp_array=temp_array[size_diff_x:temp_array.shape[0]-size_diff_x,0:temp_array.shape[1],0:temp_array.shape[2]]
+        else :
+            size_diff_x=int(size_diff_x/2)
+            temp_array=temp_array[size_diff_x:temp_array.shape[0]-size_diff_x-1,0:temp_array.shape[1],0:temp_array.shape[2]]
+
+    if image_nib_nii_file_data.shape[1] > 512:
+        print('shape[1]>512')
+        #         print('image_nib_nii_file_data.shape')
+        #         print(image_nib_nii_file_data.shape)
+        #         print('size_diff_y: {} '.format(size_diff_y))
+        if (size_diff_y % 2 )== 0 :
+            size_diff_y=int(size_diff_y/2)
+            #             print('size_diff_y/2: {} '.format(size_diff_y))
+            temp_array=temp_array[0:temp_array.shape[0],size_diff_y:temp_array.shape[1]-size_diff_y,0:temp_array.shape[2]]
+        else :
+            size_diff_y=int(size_diff_y/2)
+            #             print('size_diff_y/2: {} '.format(size_diff_y))
+            temp_array=temp_array[0:temp_array.shape[0],size_diff_y:temp_array.shape[1]-size_diff_y-1,0:temp_array.shape[2]]
+    flipped_mask=np.copy(temp_array)
+    for idx in range(temp_array.shape[2]):
+        flipped_mask[:,:,idx]=cv2.flip(temp_array[:,:,idx],0)
+    image_nib_nii_file_data=flipped_mask
+
+    print('image_nib_nii_file_data.shape')
+    print(image_nib_nii_file_data.shape)
+    return image_nib_nii_file_data
+
 ###############################################################################
 def resizeinto_512by512(image_nib_nii_file_data):
     print('I am in utilities_simple.py: resizeinto_512by512 ')
@@ -514,10 +561,6 @@ def betgrayfrombetbinary1_sh_v3():
     ## take the grayscalefiles in the inputdirectory betgrayfile== betbinary
 #    allgrayfiles=glob.glob(inputdirectory+ "/*" + betgrayfileext)
 #    for eachgrayfiles in allgrayfiles:
-    print('inputfile_gray.shape::{}'.format(inputfile_gray))
-    print('output_directory.shape::{}'.format(output_directory))
-    print('betgrayfile.shape::{}'.format(betgrayfile))
-    # print('bet_nifti_data.shape::{}'.format(bet_nifti_data.shape))
     if os.path.exists(betgrayfile):
         eachgrayfiles=inputfile_gray
         niifilenametosave=os.path.join(output_directory,os.path.basename(inputfile_gray).split(".nii")[0] + "_brain_f.nii.gz") #outputfilename #os.path.join(outputdirectory,os.path.basename(eachgrayfiles).split(".nii")[0]+"_bet.nii.gz")
@@ -526,9 +569,7 @@ def betgrayfrombetbinary1_sh_v3():
         gray_nifti=nib.load(eachgrayfiles)
         gray_nifti_data=gray_nifti.get_fdata() #.get_unscaled() #.get_fdata() dataobj.
         bet_nifti=nib.load(betgrayfile)
-        bet_nifti_data=bet_nifti.get_fdata() #dataobj.get_unscaled() #.get_fdata()
-        print('gray_nifti_data.shape::{}'.format(gray_nifti_data.shape))
-        print('bet_nifti_data.shape::{}'.format(bet_nifti_data.shape))
+        bet_nifti_data=bet_nifti.dataobj.get_unscaled() #.get_fdata()
         gray_nifti_data[bet_nifti_data<np.max(bet_nifti_data)]= 0 #np.min(gray_nifti_data)
         array_img = nib.Nifti1Image(gray_nifti_data, affine=gray_nifti.affine, header=gray_nifti.header)
         nib.save(array_img, niifilenametosave)
@@ -693,7 +734,7 @@ def write_tex_im_in_afolder_fordocker(foldername,max_num_img,img_ext="*.png"):
         if counter < max_num_img:
             thisfilebasename=os.path.basename(each_png_file)
             latex_start_table1c(latexfilename)
-            latex_insertimage_table1c(latexfilename,image1='/input1/'+thisfilebasename,caption= thisfilebasename.split('.png'),imagescale=0.3)
+            latex_insertimage_table1c(latexfilename,image1='/input/'+thisfilebasename,caption= thisfilebasename.split('.png'),imagescale=0.3)
             latex_end_table2c(latexfilename)
             latex_insert_line_nodate(latexfilename, thisfilebasename.split('.png')[0] )
             counter=counter+1
