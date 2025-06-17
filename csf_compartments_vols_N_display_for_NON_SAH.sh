@@ -97,14 +97,14 @@ run_Registration() {
   #  /software/nwu_csf_volume.sh ${this_filename} ${this_betfilename} ${this_csfmaskfilename} ${this_infarctmaskfilename} ${lower_threshold} ${upper_threshold}
   #  echo "nwu_csf_volume successful" >>${output_directory}/success.txt
   #  thisfile_basename=$(basename $this_filename)
-  #  # for texfile in $(/usr/lib/fsl/5.0/remove_ext ${output_directory}/$thisfile_basename)*.tex ;
+  #  # for texfile in $(/usr/local/fsl/bin/remove_ext ${output_directory}/$thisfile_basename)*.tex ;
   #  for texfile in ${output_directory}/*.tex; do
-  #    pdflatex -halt-on-error -interaction=nonstopmode -output-directory=${output_directory} $texfile ##${output_directory}/$(/usr/lib/fsl/5.0/remove_ext $this_filename)*.tex
+  #    pdflatex -halt-on-error -interaction=nonstopmode -output-directory=${output_directory} $texfile ##${output_directory}/$(/usr/local/fsl/bin/remove_ext $this_filename)*.tex
   #    rm ${output_directory}/*.aux
   #    rm ${output_directory}/*.log
   #  done
   #
-  #  for filetocopy in $(/usr/lib/fsl/5.0/remove_ext ${output_directory}/$thisfile_basename)*_brain_f.nii.gz; do
+  #  for filetocopy in $(/usr/local/fsl/bin/remove_ext ${output_directory}/$thisfile_basename)*_brain_f.nii.gz; do
   #    cp ${filetocopy} ${final_output_directory}/
   #  done
   #
@@ -157,14 +157,14 @@ run_IML() {
   #  /software/nwu_csf_volume.sh ${this_filename} ${this_betfilename} ${this_csfmaskfilename} ${this_infarctmaskfilename} ${lower_threshold} ${upper_threshold}
   #  echo "nwu_csf_volume successful" >>${output_directory}/success.txt
   #  thisfile_basename=$(basename $this_filename)
-  #  # for texfile in $(/usr/lib/fsl/5.0/remove_ext ${output_directory}/$thisfile_basename)*.tex ;
+  #  # for texfile in $(/usr/local/fsl/bin/remove_ext ${output_directory}/$thisfile_basename)*.tex ;
   #  for texfile in ${output_directory}/*.tex; do
-  #    pdflatex -halt-on-error -interaction=nonstopmode -output-directory=${output_directory} $texfile ##${output_directory}/$(/usr/lib/fsl/5.0/remove_ext $this_filename)*.tex
+  #    pdflatex -halt-on-error -interaction=nonstopmode -output-directory=${output_directory} $texfile ##${output_directory}/$(/usr/local/fsl/bin/remove_ext $this_filename)*.tex
   #    rm ${output_directory}/*.aux
   #    rm ${output_directory}/*.log
   #  done
   #
-  #  for filetocopy in $(/usr/lib/fsl/5.0/remove_ext ${output_directory}/$thisfile_basename)*_brain_f.nii.gz; do
+  #  for filetocopy in $(/usr/local/fsl/bin/remove_ext ${output_directory}/$thisfile_basename)*_brain_f.nii.gz; do
   #    cp ${filetocopy} ${final_output_directory}/
   #  done
   #
@@ -218,18 +218,18 @@ run_CSF_COMPARTMENTS_CALC() {
   /software/nwu_csf_volume.sh ${this_filename} ${this_betfilename} ${this_csfmaskfilename} ${this_infarctmaskfilename} 0 1000 #${lower_threshold} ${upper_threshold}
   echo "nwu_csf_volume successful" >>${output_directory}/success.txt
   thisfile_basename=$(basename $this_filename)
-  #  # for texfile in $(/usr/lib/fsl/5.0/remove_ext ${output_directory}/$thisfile_basename)*.tex ;
+  #  # for texfile in $(/usr/local/fsl/bin/remove_ext ${output_directory}/$thisfile_basename)*.tex ;
   #  for texfile in ${output_directory}/*.tex; do
-  #    pdflatex -halt-on-error -interaction=nonstopmode -output-directory=${output_directory} $texfile ##${output_directory}/$(/usr/lib/fsl/5.0/remove_ext $this_filename)*.tex
+  #    pdflatex -halt-on-error -interaction=nonstopmode -output-directory=${output_directory} $texfile ##${output_directory}/$(/usr/local/fsl/bin/remove_ext $this_filename)*.tex
   #    rm ${output_directory}/*.aux
   #    rm ${output_directory}/*.log
   #  done
   #
-  #  for filetocopy in $(/usr/lib/fsl/5.0/remove_ext ${output_directory}/$thisfile_basename)*_brain_f.nii.gz; do
+  #  for filetocopy in $(/usr/local/fsl/bin/remove_ext ${output_directory}/$thisfile_basename)*_brain_f.nii.gz; do
   #    cp ${filetocopy} ${final_output_directory}/
   #  done
   #
-  #  for filetocopy in $(/usr/lib/fsl/5.0/remove_ext ${output_directory}/$thisfile_basename)*.mat; do
+  #  for filetocopy in $(/usr/local/fsl/bin/remove_ext ${output_directory}/$thisfile_basename)*.mat; do
   #    cp ${filetocopy} ${final_output_directory}/
   #  done
   #
@@ -270,18 +270,18 @@ run_IML_NWU_CSF_CALC() {
   /software/nwu_csf_volume.sh ${this_filename} ${this_betfilename} ${this_csfmaskfilename} ${this_infarctmaskfilename} ${lower_threshold} ${upper_threshold}
   echo "nwu_csf_volume successful" >>${output_directory}/success.txt
   thisfile_basename=$(basename $this_filename)
-  # for texfile in $(/usr/lib/fsl/5.0/remove_ext ${output_directory}/$thisfile_basename)*.tex ;
+  # for texfile in $(/usr/local/fsl/bin/remove_ext ${output_directory}/$thisfile_basename)*.tex ;
   for texfile in ${output_directory}/*.tex; do
-    pdflatex -halt-on-error -interaction=nonstopmode -output-directory=${output_directory} $texfile ##${output_directory}/$(/usr/lib/fsl/5.0/remove_ext $this_filename)*.tex
+    pdflatex -halt-on-error -interaction=nonstopmode -output-directory=${output_directory} $texfile ##${output_directory}/$(/usr/local/fsl/bin/remove_ext $this_filename)*.tex
     rm ${output_directory}/*.aux
     rm ${output_directory}/*.log
   done
 
-  for filetocopy in $(/usr/lib/fsl/5.0/remove_ext ${output_directory}/$thisfile_basename)*_brain_f.nii.gz; do
+  for filetocopy in $(/usr/local/fsl/bin/remove_ext ${output_directory}/$thisfile_basename)*_brain_f.nii.gz; do
     cp ${filetocopy} ${final_output_directory}/
   done
 
-  for filetocopy in $(/usr/lib/fsl/5.0/remove_ext ${output_directory}/$thisfile_basename)*.mat; do
+  for filetocopy in $(/usr/local/fsl/bin/remove_ext ${output_directory}/$thisfile_basename)*.mat; do
     cp ${filetocopy} ${final_output_directory}/
   done
 
@@ -1344,7 +1344,7 @@ for each_npy in  $(find /ZIPFILEDIR/ -name '*.npy') ;  do  if [[ $each_npy  == *
 
     pdfilename_1_1=${output_directory}/$(basename ${latexfilename%.tex*}_${timestampnow}.pdf)
     outputfiles_present=$(python3 utilities_simple_trimmed.py "${call_latex_end_arguments[@]}")
-    pdflatex -halt-on-error -interaction=nonstopmode -output-directory=${output_directory} ${latexfilename} ##${output_directory}/$(/usr/lib/fsl/5.0/remove_ext $this_filename)*.tex
+    pdflatex -halt-on-error -interaction=nonstopmode -output-directory=${output_directory} ${latexfilename} ##${output_directory}/$(/usr/local/fsl/bin/remove_ext $this_filename)*.tex
     URI_1=${url1%/resources*}
     all_files_to_upload=()
     resource_dirname="CSF_COMPARTMENTS_ANALYSIS"

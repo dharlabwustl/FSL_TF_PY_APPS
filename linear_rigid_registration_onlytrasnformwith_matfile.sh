@@ -21,17 +21,17 @@ template_image_ventricle=$template_ventricle_directory/$template_ventricle_filen
 template_basename="$(basename -- $template_image)"
 exten="${template_basename%%.nii*}"
 echo $template_basename 
-img=$(/usr/lib/fsl/5.0/remove_ext $filename)
+img=$(/usr/local/fsl/bin/remove_ext $filename)
 img_basename=$(basename -- $img)
 output_filename=$output_directory/$img_basename
 echo $output_filename
-/usr/lib/fsl/5.0/flirt -in ${img} -ref ${template_image} -out "${output_filename}${exten}lin1" -init ${output_filename}_${exten}lin1.mat  -applyxfm
-#/usr/lib/fsl/5.0/flirt  -in "${img}" -ref "${template_image}"  -dof 12 -out "${output_filename}${exten}lin1" -omat ${output_filename}_${exten}lin1.mat
+/usr/local/fsl/bin/flirt -in ${img} -ref ${template_image} -out "${output_filename}${exten}lin1" -init ${output_filename}_${exten}lin1.mat  -applyxfm
+#/usr/local/fsl/bin/flirt  -in "${img}" -ref "${template_image}"  -dof 12 -out "${output_filename}${exten}lin1" -omat ${output_filename}_${exten}lin1.mat
 
-/usr/lib/fsl/5.0/flirt -in ${template_image} -ref ${img} -out "${output_filename}${exten}lin1_1" -init ${output_filename}_${exten}lin1_1.mat  -applyxfm
+/usr/local/fsl/bin/flirt -in ${template_image} -ref ${img} -out "${output_filename}${exten}lin1_1" -init ${output_filename}_${exten}lin1_1.mat  -applyxfm
 
-/usr/lib/fsl/5.0/flirt -in ${template_image_ventricle} -ref ${img} -out "${output_filename}${exten}_onlyventricle_lin1_1" -init ${output_filename}_${exten}lin1_1.mat  -applyxfm
-#/usr/lib/fsl/5.0/flirt -ref  "${img}"  -in "${template_image}"  -dof 12 -out "${output_filename}${exten}lin1_1" -omat ${output_filename}_${exten}lin1_1.mat
+/usr/local/fsl/bin/flirt -in ${template_image_ventricle} -ref ${img} -out "${output_filename}${exten}_onlyventricle_lin1_1" -init ${output_filename}_${exten}lin1_1.mat  -applyxfm
+#/usr/local/fsl/bin/flirt -ref  "${img}"  -in "${template_image}"  -dof 12 -out "${output_filename}${exten}lin1_1" -omat ${output_filename}_${exten}lin1_1.mat
 
 echo "IMAGE REGISTERED"
 echo "REGISTRATION OUTPUT:""${output_filename}_${exten}lin1.nii.gz"

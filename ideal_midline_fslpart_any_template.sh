@@ -3,11 +3,11 @@
 #mask_on_template=${3} #midlinecssfResampled1.nii.gz
 #input_filename=${1}
 #inv_transformmatrix_file=${4} #{output_filename}_${exten}lin1Inv.mat
-#/usr/lib/fsl/5.0/convert_xfm -omat $inv_transformmatrix_file -inverse $transformmatrix_file
+#/usr/local/fsl/bin/convert_xfm -omat $inv_transformmatrix_file -inverse $transformmatrix_file
 #transformed_output_file=$template_mask_output_directory/${mask_on_template%.nii*}$file_basename".nii.gz"
 #echo $transformmatrix_file
 #echo $inv_transformmatrix_file
-#/usr/lib/fsl/5.0/flirt -in ${midline_ontemplate_nii} -ref $x -out ${transformed_output_file} -init ${inv_transformmatrix_file} -applyxfm
+#/usr/local/fsl/bin/flirt -in ${midline_ontemplate_nii} -ref $x -out ${transformed_output_file} -init ${inv_transformmatrix_file} -applyxfm
 #echo " REGISTERED OUTPUT FILE "
 #echo $transformed_output_file
 ##
@@ -45,10 +45,10 @@
 ##filename_without_ext=${x%.nii*}
 ##transformmatrix_file=${output_filename}_${exten}lin1.mat
 ##inv_transformmatrix_file=${output_filename}_${exten}lin1Inv.mat
-##/usr/lib/fsl/5.0/convert_xfm -omat $inv_transformmatrix_file -inverse $transformmatrix_file
+##/usr/local/fsl/bin/convert_xfm -omat $inv_transformmatrix_file -inverse $transformmatrix_file
 ##transformed_output_file=$template_mask_output_directory/${mask_on_template%.nii*}$file_basename".nii.gz"
 ##echo $transformmatrix_file
 ##echo $inv_transformmatrix_file
-##/usr/lib/fsl/5.0/flirt -in ${midline_ontemplate_nii} -ref $x -out ${transformed_output_file} -init ${inv_transformmatrix_file} -applyxfm
+##/usr/local/fsl/bin/flirt -in ${midline_ontemplate_nii} -ref $x -out ${transformed_output_file} -init ${inv_transformmatrix_file} -applyxfm
 ##echo " REGISTERED OUTPUT FILE "
 ##echo $transformed_output_file
