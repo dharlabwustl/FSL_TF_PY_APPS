@@ -10,6 +10,7 @@ rm -r /ZIPFILEDIR/*
 rm -r /NIFTIFILEDIR/*
 rm -r /DICOMFILEDIR/*
 rm -r /maskonly/*
+rm -r /software/data.h5
 
 }
 ## STEPS 1: Registration of template ct (COLIHM62) to a session CT.
