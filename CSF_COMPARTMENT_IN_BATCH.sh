@@ -42,5 +42,5 @@ while IFS=',' read -ra array; do
     echo ${SESSION_ID}  
 #    directory_to_create_destroy
     ./STEPS_COMPARTMENTS_CSF.sh  ${SESSION_ID} ##${}SNIPR02_E09040 ##  SNIPR01_E00011  ##SNIPR02_E02991 ## ${SESSION_ID}
-    break
+#    break
 done < <(tail -n +2 "${sessions_list}")
