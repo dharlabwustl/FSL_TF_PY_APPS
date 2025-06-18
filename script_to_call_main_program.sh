@@ -30,5 +30,10 @@ if [[ ${TYPE_OF_PROGRAM} == 'CSF_COMPARTMENTS' ]]; then
   echo ${SESSION_ID}
   /software/STEPS_COMPARTMENTS_CSF.sh $SESSION_ID $XNAT_USER $XNAT_PASS $XNAT_HOST /input1 /output
 fi
+if [[ ${TYPE_OF_PROGRAM} == 'CSF_COMPARTMENTS_BATCH' ]]; then
+  echo ${SESSION_ID}
+  PROJECT_ID=${SESSION_ID}
+  /software/CSF_COMPARTMENT_IN_BATCH.sh ${PROJECT_ID} $XNAT_USER $XNAT_PASS $XNAT_HOST /input1 /output
+fi
 
 
