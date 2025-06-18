@@ -31,7 +31,7 @@ get_column_number() {
     echo "Column '$column_name' not found!" >&2
     return 1
 }
-curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   $XNAT_HOST/data/experiments/?format=csv  > sessions.csv
+curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   $XNAT_HOST/data/projects/${project_ID}/experiments/?format=csv  > sessions.csv
 sessions_list='sessions.csv' ##'sessions_COLI_ANALYTICS_STEP3_20231122041129_ordered.csv' ##'wrong_data_from_arjun.csv' ##vns_list_to_fix_df_1.csv' ###'sessions_COLI_ANALYTICS_STEP3_20231122041129_ordered.csv' 
 csv_file=${sessions_list} 
 column_name="ID" 
