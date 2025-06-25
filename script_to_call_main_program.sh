@@ -35,5 +35,9 @@ if [[ ${TYPE_OF_PROGRAM} == 'CSF_COMPARTMENTS_BATCH' ]]; then
   PROJECT_ID=${SESSION_ID}
   /software/CSF_COMPARTMENT_IN_BATCH.sh ${PROJECT_ID} $XNAT_USER $XNAT_PASS $XNAT_HOST /input1 /output
 fi
+if [[ ${TYPE_OF_PROGRAM} == 'DEEPREG_FOR_CSF_COMPARTMENTS' ]]; then
+  echo ${SESSION_ID}
+/software/deepregbasedregis_csf_cistern_midline_separation_with_COLIHM62_NO_RAPIDS.sh $SESSION_ID $XNAT_USER $XNAT_PASS $XNAT_HOST /input1 /output
+fi
 
 
