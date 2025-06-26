@@ -26,11 +26,11 @@ fi
 
 echo ${TYPE_OF_PROGRAM}::TYPE_OF_PROGRAM::${SUBTYPE_OF_PROGRAM}::${ADDR[0]}::${ADDR[2]}::${ADDR[3]}
 ######################### MIDLINE SHIFT 3D PROFILE PIPELINE##############################################################
-if [[ ${TYPE_OF_PROGRAM} == 'CSF_COMPARTMENTS' ]]; then
+if [[ ${TYPE_OF_PROGRAM} == 'SESSION_CSF_COMPARTMENTS' ]]; then
   echo ${SESSION_ID}
   /software/STEPS_COMPARTMENTS_CSF.sh $SESSION_ID $XNAT_USER $XNAT_PASS $XNAT_HOST /input1 /output
 fi
-if [[ ${TYPE_OF_PROGRAM} == 'CSF_COMPARTMENTS_BATCH' ]]; then
+if [[ ${TYPE_OF_PROGRAM} == 'PROJECT_CSF_COMPARTMENTS' ]]; then
   echo ${SESSION_ID}
   PROJECT_ID=${SESSION_ID}
   /software/CSF_COMPARTMENT_IN_BATCH.sh ${PROJECT_ID} $XNAT_USER $XNAT_PASS $XNAT_HOST /input1 /output
