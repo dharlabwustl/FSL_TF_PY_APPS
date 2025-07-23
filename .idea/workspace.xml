@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1ce5e736-4520-4579-b7eb-837d5d505a4a" name="Changes" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile0" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/STEPS_COMPARTMENTS_CSF.sh" beforeDir="false" afterPath="$PROJECT_DIR$/STEPS_COMPARTMENTS_CSF.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STEP_DEEPREG_COMPARTMENTS_CSF.sh" beforeDir="false" afterPath="$PROJECT_DIR$/STEP_DEEPREG_COMPARTMENTS_CSF.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,22 +60,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749765785824</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Initial Commit">
-      <option name="closed" value="true" />
-      <created>1750107854604</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1750107854604</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Initial Commit">
-      <option name="closed" value="true" />
-      <created>1750108718984</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1750108718984</updated>
     </task>
     <task id="LOCAL-00013" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -454,7 +437,23 @@
       <option name="project" value="LOCAL" />
       <updated>1751040421306</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1751500498089</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1751500498089</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1751500542039</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1751500542039</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
